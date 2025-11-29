@@ -28,7 +28,8 @@ export class StockfishEngine {
         return new Promise((resolve, reject) => {
             try {
                 this.worker = new Worker(
-                    new URL('/stockfish/stockfish.wasm.js', import.meta.url)
+                    new URL('./stockfishWorker.js', import.meta.url),
+                    { type: 'module' }
                 );
 
                 this.worker.onmessage = (e) => this.handleMessage(e);

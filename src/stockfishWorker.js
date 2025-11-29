@@ -21,9 +21,7 @@ function initStockfish() {
     try {
         // The WASM build exposes itself directly as a Web Worker script.
         // It is served as a static asset from `public/stockfish/stockfish.wasm.js`.
-        engineWorker = new Worker(
-            new URL('/stockfish/stockfish.wasm.js', import.meta.url)
-        );
+        engineWorker = new Worker('/stockfish/stockfish.wasm.js');
 
         engineWorker.onmessage = (event) => {
             const line = event.data;
